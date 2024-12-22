@@ -1,0 +1,28 @@
+as we all know that react router enables routing to different pages without reloading the entire pages.
+to implement react router we need to import react-router-dom lib
+then <BrowserRouter> <Routes> <Route>....</Route> </Routes> </BrowserRouter>
+<Route has 2 attributes one is path and another one is element - path defines the path of a component like /about, /contact whereas element denotes, which element should render on that particular path {home}, {about}. 
+
+in html we use atag to navigate between pages likewise in react we link tag 
+<Link to ="/about">About</Link>
+<BrowserRouter> use pannum pothu url la link /about /contact ipdi dhn irukum
+<hashRouter> use panna url la # irukum like #/about, #/contact ipdi
+
+idhula vandhu normal path kuduthom let consider a scenario enaku post nu oru component iruku adhuku ulla i have different number of post i cant write a separate component for each of the component, instead i can create a common component for that adhuku we can use params router 
+eg:
+<Route path="/post/:id" element={<Post />} />
+in this case id is a parameter which is passed to the Post component
+we can create a component and can use useParams() hook to access it 
+const component = () =>
+{
+    const {id} = useParams()
+    return(
+        <div> Post {id} </div>  based on the id respective component will be rendered
+    )
+}
+
+we can also use nested routes
+<Route path="/postpage">
+    <Route index element = {<postpage/>}
+    <Route path = ":id" element = {<Post/>}
+</Route>  nested route /postpage is the parent route and the route "/postpage/:id" is nested inside in the parent route.
